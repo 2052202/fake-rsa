@@ -1,11 +1,19 @@
-#include "fastMult.hpp"
+unsigned long long modpow(unsigned long long* base,
+                          unsigned long long power,
+                          unsigned long long* mod) {
 
+    unsigned long long result = 1;
+    unsigned long long b = *base % *mod;  // local copy for speed
 
-int getBit(long long* number, int i) {
-    return ((*number >> i) & 1);
-}
+    while (power > 0) {
 
+        if (power & 1) {  // if odd
+            result = (result * b) % *mod;
+        }
 
-long long pow(long long* base, long long* power, long long* mod){
-    
+        b = (b * b) % *mod;  // square the base
+        power >>= 1;         // divide exponent by 2
+    }
+
+    return result;
 }

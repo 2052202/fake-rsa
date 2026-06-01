@@ -1,8 +1,10 @@
 #ifndef fastMult_HPP
 #define fastMult_HPP
 
-int getBit(long long* number, int i);
 
-long long pow(long long base, long long power, long long mod);
+
+unsigned long long modpow(unsigned long long* base,
+                          unsigned long long power,
+                          unsigned long long* mod);
 
 #endif
