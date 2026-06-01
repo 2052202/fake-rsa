@@ -1,3 +1,5 @@
+#include "fastMult.hpp"
+
 unsigned long long modpow(unsigned long long* base,
                           unsigned long long power,
                           unsigned long long* mod) {
