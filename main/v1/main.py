@@ -1,3 +1,23 @@
+def power(base, exponent):
+    res = 1
+    while exponent > 0:
+        if exponent & 1:
+            res *= base
+        exponent >>= 1
+        base *= base
+    return res
+
+def mod_power(base, exponent, mod):
+    res = 1
+    while exponent > 0:
+        if exponent & 1:
+            res = (res * base) % mod
+        exponent >>= 1
+        base = (base * base) % mod
+    return res
+
+
+
 import math
 def FindGCF(x,y):
   if (x % y == 0):
@@ -72,6 +92,6 @@ def StartRSA_var():
   d = MultModInverse(e,phi_n)
   return True
 def Encrypter(Plaintext):
-  return pow(Plaintext,e) % n
+  return mod_power(Plaintext, e, n)
 def Decrypter(ciphertext):
-  return pow(ciphertext, d) % n
+  return mod_power(ciphertext, d, n)
